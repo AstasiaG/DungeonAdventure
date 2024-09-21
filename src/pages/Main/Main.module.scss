@@ -1,0 +1,52 @@
+@use '@/styles/global.scss';
+
+.main {
+  padding: 8.3rem 0 10.3rem;
+  color: global.$light;
+  text-align: center;
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 4.8rem;
+    margin-bottom: 6rem;
+  }
+
+  p {
+    width: 77rem;
+    margin: 0 auto;
+    font-size: 1.6rem;
+
+    &:not(:last-child) {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .image {
+    width: 18rem;
+    height: 18rem;
+    margin: 8.5rem auto 5rem;
+  }
+
+  .btn {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 2.8rem 5rem 2rem;
+    font-size: 2.6rem;
+    text-transform: uppercase;
+    background-color: global.$light;
+    color: global.$dark;
+    border: 0.5rem solid global.$blue;
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.2s;
+  
+    &:hover {
+      background-color: global.$blue;
+      color: global.$light;
+    }
+  }
+}

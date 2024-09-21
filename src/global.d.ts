@@ -1,11 +1,10 @@
-//определение модулей для ts, без него будет ошибка
 declare module '*.module.scss' {
   interface IClassNames {
     [className: string]: string
   }
 
-  const className: IClassNames;
-  export = className;
+  const classes: IClassNames;
+  export = classes;
 }
 
 declare module '*.png';
