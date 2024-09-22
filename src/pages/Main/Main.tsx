@@ -1,4 +1,3 @@
-import { BtnPrimary } from '@/components/UI/BtnPrimary/BtnPrimary'
 import React from 'react'
 import * as classes from './Main.module.scss'
 import door from '@/assets/door.png'

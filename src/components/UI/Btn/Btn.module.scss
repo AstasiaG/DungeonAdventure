@@ -1,0 +1,15 @@
+@use '@/styles/global.scss';
+
+.btn {
+  width: 15.4rem;
+  padding: 1.8rem 2.9rem 2rem;
+  font-size: 1.6rem;
+  background-color: global.$case;
+  color: global.$light;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: global.$blue;
+  }
+}

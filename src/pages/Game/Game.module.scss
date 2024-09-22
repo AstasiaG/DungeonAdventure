@@ -1,0 +1,8 @@
+@use '@/styles/global.scss';
+
+.game {
+
+  .btn {
+    @include global.btn-link
+  }
+}

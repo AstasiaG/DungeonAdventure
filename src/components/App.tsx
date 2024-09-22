@@ -4,13 +4,21 @@ import { Main } from '@/pages/Main/Main'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Characters } from '@/pages/Characters/Characters'
 import { Game } from '@/pages/Game/Game'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IPlayer } from '@/types/types'
 import { PlayerContext } from '@/context'
 
 export const App = () => {
   const [floor, setFloor] = useState<number>(1)
   const [player, setPlayer] = useState<IPlayer | null>(null)
+
+  // useEffect(() => {
+  //   if (localStorage.getItem('player')) {
+  //     console.log('runs')
+  //     const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
+  //     setPlayer(currentPlayer);
+  //   }
+  // }, [])
   
   return (
     <PlayerContext.Provider value={{

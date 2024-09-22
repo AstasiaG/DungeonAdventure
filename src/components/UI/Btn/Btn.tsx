@@ -1,11 +1,12 @@
 import React, { FC, ReactNode } from 'react'
-import * as classes from './BtnPrimary.module.scss'
+import * as classes from './Btn.module.scss'
 
 interface BtnProps {
   children: ReactNode
+  onClick?: () => void
 }
 
-export const BtnPrimary: FC<BtnProps> = ({ children, ...props }) => {
+export const Btn: FC<BtnProps> = ({ children, ...props }) => {
   return (
     <button className={ classes.btn } {...props}>
       { children }

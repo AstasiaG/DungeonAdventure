@@ -6,3 +6,11 @@ export interface IPlayer {
   action: number
   img: string
 }
+
+export interface IMonster {
+  id: number
+  name: string
+  health: number
+  damage: number
+  img: string
+}

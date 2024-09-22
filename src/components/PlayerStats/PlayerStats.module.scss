@@ -1,0 +1,23 @@
+@use '@/styles/global.scss';
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  width: fit-content;
+  padding: 2.2rem 7rem;
+  margin: 0 auto;
+  background-color: global.$case;
+  border: 0.4rem solid global.$light;
+
+  .stat {
+    width: 10rem;
+    text-align: center;
+    color: global.$light;
+    font-size: 1.6rem;
+
+    & span {
+      font-size: 2rem;
+    }
+  }
+}
