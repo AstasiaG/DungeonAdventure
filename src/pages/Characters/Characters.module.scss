@@ -1,0 +1,18 @@
+@use '@/styles/global.scss';
+
+.characters {
+  padding: 5.3rem 0 10.3rem;
+  color: global.$light;
+  text-align: center;
+
+  h2 {
+    font-size: 3.2rem;
+    margin-bottom: 5rem;
+  }
+
+  .list {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+  }
+}

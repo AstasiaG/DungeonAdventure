@@ -1,0 +1,58 @@
+{
+  "Characters": [
+    {
+      "id": 0,
+      "name": "Knight",
+      "health": 300,
+      "action": 3,
+      "damage": 35,
+      "img": "https://i.ibb.co/XpJs6hz/knight.png"
+    },
+    {
+      "id": 1,
+      "name": "Rouge",
+      "health": 250,
+      "action": 6,
+      "damage": 40,
+      "img": "https://i.ibb.co/PgcLcQc/rogue.png"
+    },
+    {
+      "id": 2,
+      "name": "Mage",
+      "health": 150,
+      "action": 4,
+      "damage": 60,
+      "img": "https://i.ibb.co/ydzWJBW/mage.png"
+    }
+  ],
+  "Monsters": [
+    {
+      "id": 0,
+      "name": "Slime",
+      "health": 100,
+      "damage": 5,
+      "img": "https://i.ibb.co/x8cmLWC/slime-s.png"
+    },
+    {
+      "id": 1,
+      "name": "Orc",
+      "health": 150,
+      "damage": 15,
+      "img": "https://i.ibb.co/z7vgZsC/orc.png"
+    },
+    {
+      "id": 2,
+      "name": "Ettin",
+      "health": 300,
+      "damage": 30,
+      "img": "https://i.ibb.co/pnff04v/ettin.png"
+    },
+    {
+      "id": 3,
+      "name": "Skeleton",
+      "health": 200,
+      "damage": 20,
+      "img": "https://i.ibb.co/ypJs9Y8/skeleton.png"
+    }
+  ]
+}

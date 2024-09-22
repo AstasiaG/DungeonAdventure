@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 export const Main = () => {
   return (
-    <section className={`container ${classes.main}`}>
+    <section className={classes.main}>
       <div className={classes.inner}>
         <h1>Dungeon Adventure</h1>
         <p>

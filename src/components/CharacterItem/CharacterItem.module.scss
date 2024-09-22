@@ -1,0 +1,53 @@
+@use '@/styles/global.scss';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  width: 26.5rem;
+  padding: 3.2rem 2.8rem;
+  border: 0.6rem solid transparent;
+  background-color: global.$case;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.1s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  h3 {
+    font-size: 2rem;
+    color: global.$light;
+  }
+
+  .image {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .stats {
+    width: 100%;
+  }
+
+  .stat {
+    color: global.$light;
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+    p {
+      display: flex;
+      width: 100%;
+
+      span {
+        margin-left: auto;
+      }
+    }
+  }
+
+  &.active {
+    border-color: global.$blue;
+  }
+}
