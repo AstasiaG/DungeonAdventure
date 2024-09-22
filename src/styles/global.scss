@@ -94,3 +94,21 @@ input {
   max-width: 144rem;
   width: 100%;
 }
+
+@mixin btn-link {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1.8rem 4rem 0.8rem;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  background-color: $light;
+  color: $dark;
+  border: 0.5rem solid $blue;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.2s;
+
+  &:hover {
+    background-color: $blue;
+    color: $light;
+  }
+}
