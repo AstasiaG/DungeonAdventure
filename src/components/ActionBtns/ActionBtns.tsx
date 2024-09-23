@@ -10,7 +10,7 @@ interface ButtonsProps {
 export const ActionBtns: FC<ButtonsProps> = ({attack}) => {
 
   return (
-    <div>
+    <div style={{margin: "3rem auto 0", width: 'fit-content'}}>
       <Btn onClick={attack}>
         Attack
       </Btn>

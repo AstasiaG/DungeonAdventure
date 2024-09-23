@@ -1,8 +1,26 @@
 @use '@/styles/global.scss';
 
 .game {
+  padding: 5.3rem 0 10.3rem;
+  color: global.$light;
+
+  h2 {
+    text-align: center;
+    font-size: 3.2rem;
+    margin-bottom: 5rem;
+  }
 
   .btn {
+    margin: o auto;
     @include global.btn-link
+  }
+
+  .btnFrame {
+    width: 30rem;
+    height: 23.6rem;
+    margin: 0 auto 13rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
