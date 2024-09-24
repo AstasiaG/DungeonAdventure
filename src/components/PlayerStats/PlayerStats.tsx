@@ -11,7 +11,7 @@ export const PlayerStats = () => {
             HP
             <br />
             <span>
-              {player.health}
+              {player.health < 0 ? 0 : player.health}
             </span>
           </p>
         </li>

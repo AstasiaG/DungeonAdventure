@@ -6,13 +6,16 @@ import { MonsterPanel } from '@/components/MonsterPanel/MonsterPanel';
 import { ActionBtns } from '@/components/ActionBtns/ActionBtns';
 import * as classes from './Game.module.scss'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const Game = () => {
   const { floor, player, setFloor, setPlayer, playerRef } = useContext(PlayerContext);
   const [monsters, setMonsters] = useState<IMonster[]>([]);
   const [monster, setMonster] = useState<IMonster | null>(null);
   const [isWin, setIsWin] = useState<boolean>(false)
+  const [isLoose, setIsLoose] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const router = useNavigate()
 
   useEffect(() => {
     if (localStorage.getItem('player')) {
@@ -54,11 +57,16 @@ export const Game = () => {
       if (player.action === 0 && !(monster.health <= 0)) {
         setPlayer({ ...player, health: player.health - monster.damage, action: playerRef.current.action})
       }
+
+      if (player.health <= 0) {
+        setIsLoose(true)
+        localStorage.clear()
+      }
     }
   },[player?.action, monster?.health])
 
   const monsterAttack = () => {
-    setPlayer({ ...player, health: player.health - monster.damage, action: playerRef.current.action})
+    setPlayer({ ...player, health: player.health - monster.damage, action: playerRef.current.action })
   }
 
   const getRandomMonster = useMemo(() => {
@@ -68,19 +76,47 @@ export const Game = () => {
 
   return (
     <div className={classes.game}>
-      <h2>${floor} Floor</h2>
       {isWin ?
-        <div className={classes.btnFrame}>
-          <button className={classes.btn} onClick={() => {
-            setFloor(floor + 1)
-            setIsWin(false)
-          }}>
-            Next room
+        <>
+          <h2>You're Win!</h2>
+          <div className={classes.btnFrame}>
+            <button className={classes.btn} onClick={() => {
+              setFloor(floor + 1)
+              setIsWin(false)
+            }}>
+              Next room
+            </button>
+          </div>
+        </>
+        :
+        isLoose ?
+        <>
+          <h2>You're Dead!</h2>
+          <div className={classes.btnFrame}>
+            <button className={classes.btn} onClick={() => {
+              setFloor(1)
+              setIsLoose(false)
+              router('/characters')
+            }}>
+              Repeat?
           </button>
-        </div>
-        : isLoading ? <h3>Loading...</h3> :
-        <MonsterPanel monster={monster} />
+          <button className={classes.btn} onClick={() => {
+              setFloor(1)
+              setIsLoose(false)
+              router('/')
+            }}>
+              Exit
+            </button>
+          </div>
+        </>
+        :
+        isLoading ? <h3>Loading...</h3> :
+          <>
+            <h2>${floor} Floor</h2>
+            <MonsterPanel monster={monster} />
+          </>
       }
+
       {player &&
         <PlayerStats />
       }

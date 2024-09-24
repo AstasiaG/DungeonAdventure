@@ -40,7 +40,7 @@ export const Characters = () => {
       <div className={classes.list}>
         {isLoading ? <h3>Loading...</h3> :
           characters.map((character: IPlayer) => 
-          <CharacterItem character={character} active={active} onClick={ () => ChoosePlayer(character)} />
+          <CharacterItem character={character} active={active} onClick={ () => ChoosePlayer(character)} key={character.id} />
         )}
       </div>
       <Link to={'/game'} className={classes.btn}>
