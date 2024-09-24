@@ -23,7 +23,7 @@ export default (env: EnvVariables) => {
 
     output: {
       path: path.resolve(__dirname, 'build'),
-      filename: '[name].[contenthash].js',
+      filename: isDev ? '[name].js' : '[name].[contenthash].js',
       clean: true
     },
 

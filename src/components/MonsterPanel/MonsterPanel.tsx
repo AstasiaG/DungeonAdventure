@@ -1,7 +1,6 @@
 import { IMonster } from '@/types/types'
 import React, { FC, useEffect, useMemo, useRef } from 'react'
 import * as classes from './MonsterPanel.module.scss'
-import Data from '@/assets/api.json'
 
 interface MonsterPanelProps {
   monster: IMonster

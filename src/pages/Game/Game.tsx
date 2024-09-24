@@ -15,8 +15,15 @@ export const Game = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    fetchMonsters()
+    if (localStorage.getItem('player')) {
+      const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
+      setPlayer(currentPlayer);
+    }
   },[])
+
+  useEffect(() => {
+    fetchMonsters()
+  },[isWin])
 
   async function fetchMonsters() {
     try {
@@ -32,21 +39,20 @@ export const Game = () => {
   const attack = () => {
     setMonster({ ...monster, health: monster.health - player.damage })
     setPlayer({ ...player, action: player.action - 1 })
-    
-    checkHealth()
   }
 
-  const checkHealth = () => {
-    console.log(monster.health)
-    if (monster.health <= 0) {
-      setIsWin(true)
-      setPlayer({...player, action: playerRef.current.action})
-    }
+  console.log(player)
 
-    if (player.action === 0 && !(monster.health <= 0)) {
-      monsterAttack()
-    }
-  }
+  // const checkHealth = useMemo(() => {
+  //   if ((monster.health) <= 0) {
+  //     setIsWin(true)
+  //     setPlayer({...player, action: playerRef.current.action})
+  //   }
+
+  //   if (player.action === 0 && !(monster.health <= 0)) {
+  //     monsterAttack()
+  //   }
+  // },[player.action, monster.health])
 
   const monsterAttack = () => {
     setPlayer({ ...player, health: player.health - monster.damage, action: playerRef.current.action})
@@ -73,7 +79,9 @@ export const Game = () => {
         : isLoading ? <h3>Loading...</h3> :
         <MonsterPanel monster={monster} />
       }
-      <PlayerStats />
+      {player &&
+        <PlayerStats />
+      }
       {!isWin &&
         <ActionBtns attack={attack} />
       }

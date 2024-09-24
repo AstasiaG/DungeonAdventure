@@ -13,13 +13,12 @@ export const App = () => {
   const [player, setPlayer] = useState<IPlayer | null>(null)
   const playerRef = useRef<IPlayer>(null);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem('player')) {
-  //     console.log('runs')
-  //     const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
-  //     setPlayer(currentPlayer);
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (localStorage.getItem('player')) {
+      const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
+      setPlayer(currentPlayer);
+    }
+  }, [])
   
   return (
     <PlayerContext.Provider value={{

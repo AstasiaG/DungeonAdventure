@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {IPlayer} from '@/types/types'
-import Data from '@/assets/api.json';
 import { CharacterItem } from '@/components/CharacterItem/CharacterItem'
 import * as classes from './Characters.module.scss'
 import { Link } from 'react-router-dom';
@@ -12,8 +11,6 @@ export const Characters = () => {
   const [characters, setCharacters] = useState<IPlayer[]>([])
   const [active, setActive] = useState<number>()
   const [isLoading, setIsLoading] = useState<boolean>(true)
-
-  // const characters: IPlayer[] = Data.Characters
 
   useEffect(() => {
     fetchCharacters()
@@ -31,8 +28,7 @@ export const Characters = () => {
   }
 
   const ChoosePlayer = (character: IPlayer) => {
-    // const playerItem = JSON.stringify(character)
-    // localStorage.setItem('player', playerItem);
+    localStorage.setItem("player", JSON.stringify(character))
     setActive(character.id)
     setPlayer(character)
     playerRef.current = character
