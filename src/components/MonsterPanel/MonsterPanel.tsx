@@ -7,8 +7,7 @@ interface MonsterPanelProps {
 }
 
 export const MonsterPanel: FC<MonsterPanelProps> = ({ monster }) => {
-  let healthRef = useRef(monster.health);
-  console.log(monster.health, healthRef)
+  let healthRef = useRef(monster?.health);
 
   return (
     <div className={classes.card}>
@@ -17,7 +16,7 @@ export const MonsterPanel: FC<MonsterPanelProps> = ({ monster }) => {
       </h3>
       <progress value={monster.health} max={healthRef.current} />
       <div className={classes.image}>
-        <img src={ monster.img } alt={`${monster.name} icon`} />
+        <img src={monster.img} alt={`${monster.name} icon`} />
       </div>
     </div>
   )

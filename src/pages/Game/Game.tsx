@@ -18,12 +18,13 @@ export const Game = () => {
     if (localStorage.getItem('player')) {
       const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
       setPlayer(currentPlayer);
+      playerRef.current = currentPlayer
     }
   },[])
 
   useEffect(() => {
     fetchMonsters()
-  },[isWin])
+  },[floor])
 
   async function fetchMonsters() {
     try {
@@ -41,18 +42,20 @@ export const Game = () => {
     setPlayer({ ...player, action: player.action - 1 })
   }
 
-  console.log(player)
+  const checkHealth = useMemo(() => {
+    if (player && monster) {
+      if ((monster.health) <= 0) {
+        setIsWin(true)
+        setPlayer({ ...player, action: playerRef.current.action })
+        setMonster(null)
+        setIsLoading(true)
+      }
 
-  // const checkHealth = useMemo(() => {
-  //   if ((monster.health) <= 0) {
-  //     setIsWin(true)
-  //     setPlayer({...player, action: playerRef.current.action})
-  //   }
-
-  //   if (player.action === 0 && !(monster.health <= 0)) {
-  //     monsterAttack()
-  //   }
-  // },[player.action, monster.health])
+      if (player.action === 0 && !(monster.health <= 0)) {
+        setPlayer({ ...player, health: player.health - monster.damage, action: playerRef.current.action})
+      }
+    }
+  },[player?.action, monster?.health])
 
   const monsterAttack = () => {
     setPlayer({ ...player, health: player.health - monster.damage, action: playerRef.current.action})
@@ -61,8 +64,7 @@ export const Game = () => {
   const getRandomMonster = useMemo(() => {
     const result: number = Math.floor(Math.random() * monsters.length)
     setMonster(monsters[result])
-  }, [floor,monsters])
-
+  }, [monsters])
 
   return (
     <div className={classes.game}>
