@@ -1,33 +1,35 @@
 import { PlayerStats } from '@/components/PlayerStats/PlayerStats'
 import { PlayerContext } from '@/context'
 import { IMonster, IPlayer } from '@/types/types';
-import React, { createRef, useContext, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { MonsterPanel } from '@/components/MonsterPanel/MonsterPanel';
 import { ActionBtns } from '@/components/ActionBtns/ActionBtns';
 import * as classes from './Game.module.scss'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { WinPanel } from '@/components/WinPanel/WinPanel';
+import { LosePanel } from '@/components/LosePanel/LosePanel';
 
 export const Game = () => {
   const { floor, player, setFloor, setPlayer, playerRef } = useContext(PlayerContext);
   const [monsters, setMonsters] = useState<IMonster[]>([]);
   const [monster, setMonster] = useState<IMonster | null>(null);
   const [isWin, setIsWin] = useState<boolean>(false)
-  const [isLoose, setIsLoose] = useState<boolean>(false)
+  const [isLose, setIsLose] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const router = useNavigate()
 
+  // проверяем наличие игрока, сохраняем в переменную и реф
   useEffect(() => {
     if (localStorage.getItem('player')) {
       const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
       setPlayer(currentPlayer);
       playerRef.current = currentPlayer
     }
-  },[])
-
+  }, [])
+  
+// получаем монстров
   useEffect(() => {
     fetchMonsters()
-  },[floor])
+  },[])
 
   async function fetchMonsters() {
     try {
@@ -40,11 +42,13 @@ export const Game = () => {
     }
   }
 
+  // атака игрока
   const attack = () => {
     setMonster({ ...monster, health: monster.health - player.damage })
     setPlayer({ ...player, action: player.action - 1 })
   }
 
+  // следим за здоровьем монстра и ходами игрока
   const checkHealth = useMemo(() => {
     if (player && monster) {
       if ((monster.health) <= 0) {
@@ -59,7 +63,7 @@ export const Game = () => {
       }
 
       if (player.health <= 0) {
-        setIsLoose(true)
+        setIsLose(true)
         localStorage.clear()
       }
     }
@@ -72,47 +76,21 @@ export const Game = () => {
   const getRandomMonster = useMemo(() => {
     const result: number = Math.floor(Math.random() * monsters.length)
     setMonster(monsters[result])
-  }, [monsters])
+  }, [floor,monsters])
 
   return (
     <div className={classes.game}>
       {isWin ?
-        <>
-          <h2>You're Win!</h2>
-          <div className={classes.btnFrame}>
-            <button className={classes.btn} onClick={() => {
-              setFloor(floor + 1)
-              setIsWin(false)
-            }}>
-              Next room
-            </button>
-          </div>
-        </>
+        <WinPanel floor={floor} setFloor={setFloor} setIsLoading={setIsLoading} setIsWin={setIsWin} />
         :
-        isLoose ?
-        <>
-          <h2>You're Dead!</h2>
-          <div className={classes.btnFrame}>
-            <button className={classes.btn} onClick={() => {
-              setFloor(1)
-              setIsLoose(false)
-              router('/characters')
-            }}>
-              Repeat?
-          </button>
-          <button className={classes.btn} onClick={() => {
-              setFloor(1)
-              setIsLoose(false)
-              router('/')
-            }}>
-              Exit
-            </button>
-          </div>
-        </>
+        isLose ?
+          <LosePanel floor={floor} setFloor={setFloor} setIsLose={setIsLose} />
         :
-        isLoading ? <h3>Loading...</h3> :
+        isLoading ?
+          <h3>Loading...</h3>
+        :
           <>
-            <h2>${floor} Floor</h2>
+            <h2>{floor} Floor</h2>
             <MonsterPanel monster={monster} />
           </>
       }

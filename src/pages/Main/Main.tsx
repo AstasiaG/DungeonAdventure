@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as classes from './Main.module.scss'
 import door from '@/assets/door.png'
 import { NavLink } from 'react-router-dom'
+import { PlayerContext } from '@/context'
 
 export const Main = () => {
+  const { player } = useContext(PlayerContext)
+  console.log(player)
   return (
     <section className={classes.main}>
       <div className={classes.inner}>
@@ -15,7 +18,7 @@ export const Main = () => {
         <div className={classes.image}>
           <img src={door} alt=''/>
         </div>
-        <NavLink to={'/characters'} className={classes.btn}>
+        <NavLink to={`${player ? '/game' : '/characters'}`} className={classes.btn}>
           Start Game
         </NavLink>
       </div>
