@@ -4,6 +4,8 @@ import * as classes from './Btn.module.scss'
 interface BtnProps {
   children: ReactNode
   onClick?: () => void
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
 }
 
 export const Btn: FC<BtnProps> = ({ children, ...props }) => {

@@ -14,4 +14,5 @@ export interface IMonster {
   health: number
   damage: number
   img: string
+  description: string
 }

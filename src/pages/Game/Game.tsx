@@ -9,8 +9,10 @@ import axios from 'axios';
 import { WinPanel } from '@/components/WinPanel/WinPanel';
 import { LosePanel } from '@/components/LosePanel/LosePanel';
 
+import data from '@/assets/api.json'
+
 export const Game = () => {
-  const { floor, player, setFloor, setPlayer, playerRef } = useContext(PlayerContext);
+  const { floor, player, setFloor, setPlayer, playerRef, setText } = useContext(PlayerContext);
   const [monsters, setMonsters] = useState<IMonster[]>([]);
   const [monster, setMonster] = useState<IMonster | null>(null);
   const [isWin, setIsWin] = useState<boolean>(false)
@@ -33,8 +35,9 @@ export const Game = () => {
 
   async function fetchMonsters() {
     try {
-      const response = await axios.get<{ Monsters: IMonster[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
-      setMonsters(response.data.Monsters)
+      // const response = await axios.get<{ Monsters: IMonster[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
+      // setMonsters(response.data.Monsters)
+      setMonsters(data.Monsters)
     } catch (e) {
       console.log(e)
     } finally {
@@ -46,6 +49,21 @@ export const Game = () => {
   const attack = () => {
     setMonster({ ...monster, health: monster.health - player.damage })
     setPlayer({ ...player, action: player.action - 1 })
+  }
+
+  const heal = () => {
+    if (player.health < playerRef.current.health && player.action >= 2) {
+      if (playerRef.current.health + 15 > playerRef.current.health) {
+        setPlayer({ ...player, health: playerRef.current.health, action: player.action - 2 })
+      } else {
+        setPlayer({ ...player, health: player.health + 15, action: player.action - 2 })
+      }
+    } else if(player.health === playerRef.current.health) {
+        setText('У вас уже полное здоровье!')
+       setTimeout(() => {
+        setText('')
+      }, 2000);
+    }
   }
 
   // следим за здоровьем монстра и ходами игрока
@@ -99,7 +117,7 @@ export const Game = () => {
         <PlayerStats />
       }
       {!isWin &&
-        <ActionBtns attack={attack} />
+        <ActionBtns attack={attack} heal={heal} />
       }
     </div>
   )

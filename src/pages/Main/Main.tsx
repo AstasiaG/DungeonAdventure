@@ -6,7 +6,8 @@ import { PlayerContext } from '@/context'
 
 export const Main = () => {
   const { player } = useContext(PlayerContext)
-  console.log(player)
+
+  
   return (
     <section className={classes.main}>
       <div className={classes.inner}>

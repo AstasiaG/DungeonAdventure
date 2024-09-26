@@ -17,6 +17,7 @@ export const App = () => {
     if (localStorage.getItem('player')) {
       const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
       setPlayer(currentPlayer);
+      // playerRef.current = currentPlayer
     }
   }, [])
   
