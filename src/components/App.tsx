@@ -5,10 +5,12 @@ import { useEffect, useRef, useState } from 'react'
 import { IPlayer } from '@/types/types'
 import { PlayerContext } from '@/context'
 import { Router } from './Router'
+import { DescriptionPanel } from './DescriptionPanel/DescriptionPanel'
 
 export const App = () => {
   const [floor, setFloor] = useState<number>(1)
   const [player, setPlayer] = useState<IPlayer | null>(null)
+  const [text, setText] = useState<string>('')
   const playerRef = useRef<IPlayer>(null);
 
   useEffect(() => {
@@ -24,7 +26,9 @@ export const App = () => {
       setFloor,
       player,
       setPlayer,
-      playerRef
+      playerRef,
+      text,
+      setText
     }}>
       <div className='container'>
         <div className='bg'>
@@ -34,6 +38,7 @@ export const App = () => {
           <Router />
         </BrowserRouter>
       </div>
+      <DescriptionPanel />
     </PlayerContext.Provider>
   )
 }

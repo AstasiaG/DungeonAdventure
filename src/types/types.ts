@@ -4,7 +4,8 @@ export interface IPlayer {
   health: number
   damage: number
   action: number
-  img: string
+  img: string,
+  description: string
 }
 
 export interface IMonster {

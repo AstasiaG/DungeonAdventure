@@ -6,6 +6,8 @@ interface CharacterProps {
   onClick: () => void
   character: IPlayer
   active: number
+  onMouseEnter: () => void
+  onMouseLeave: () => void
 }
 
 export const CharacterItem: FC<CharacterProps> = ({ character, active, ...props }) => {

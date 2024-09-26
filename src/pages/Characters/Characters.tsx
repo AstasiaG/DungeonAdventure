@@ -5,9 +5,10 @@ import * as classes from './Characters.module.scss'
 import { Link } from 'react-router-dom';
 import { PlayerContext } from '@/context';
 import axios from 'axios';
+import data from '@/assets/api.json'
 
 export const Characters = () => {
-  const { player, setPlayer, playerRef } = useContext(PlayerContext)
+  const { player, setPlayer, playerRef, setText } = useContext(PlayerContext)
   const [characters, setCharacters] = useState<IPlayer[]>([])
   const [active, setActive] = useState<number>()
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -18,8 +19,9 @@ export const Characters = () => {
 
   async function fetchCharacters() {
     try {
-      const response = await axios.get<{ Characters: IPlayer[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
-      setCharacters(response.data.Characters)
+      // const response = await axios.get<{ Characters: IPlayer[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
+      // setCharacters(response.data.Characters)
+      setCharacters(data.Characters)
     } catch (e) {
       console.log(e)
     } finally {
@@ -40,7 +42,14 @@ export const Characters = () => {
       <div className={classes.list}>
         {isLoading ? <h3>Loading...</h3> :
           characters.map((character: IPlayer) => 
-          <CharacterItem character={character} active={active} onClick={ () => ChoosePlayer(character)} key={character.id} />
+            <CharacterItem
+              character={character}
+              active={active}
+              onClick={() => ChoosePlayer(character)}
+              key={character.id}
+              onMouseEnter={() => setText(character.description)}
+              onMouseLeave={() => setText('')}
+            />
         )}
       </div>
       <Link to={'/game'} className={classes.btn}>

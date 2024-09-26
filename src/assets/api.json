@@ -6,7 +6,8 @@
       "health": 300,
       "action": 3,
       "damage": 35,
-      "img": "https://i.ibb.co/XpJs6hz/knight.png"
+      "img": "https://i.ibb.co/XpJs6hz/knight.png",
+      "description" : "Отважный рыцарь, который не мог пройти мимо просьбы жителей соседней деревни, которые слезно умоляли разобраться с обитателями, пугающими их по ночам"
     },
     {
       "id": 1,
@@ -14,7 +15,8 @@
       "health": 250,
       "action": 6,
       "damage": 40,
-      "img": "https://i.ibb.co/PgcLcQc/rogue.png"
+      "img": "https://i.ibb.co/PgcLcQc/rogue.png",
+      "description" : "Ловкий воришка, пробравшийся ко входу в поисках легких ценностей, которые ему посулили в местном трактире"
     },
     {
       "id": 2,
@@ -22,7 +24,8 @@
       "health": 150,
       "action": 4,
       "damage": 60,
-      "img": "https://i.ibb.co/ydzWJBW/mage.png"
+      "img": "https://i.ibb.co/ydzWJBW/mage.png",
+      "description" : "Скрытный маг, который в поисках сильнейших реликвий, раздобыл заметки о местном подземелье в надежде найти что-то ценное"
     }
   ],
   "Monsters": [
@@ -31,28 +34,32 @@
       "name": "Slime",
       "health": 100,
       "damage": 5,
-      "img": "https://i.ibb.co/x8cmLWC/slime-s.png"
+      "img": "https://i.ibb.co/x8cmLWC/slime-s.png",
+      "description" : "Маленький сгусток слизи, слабый свет факела переливается в его теле и отражается бликами на стены"
     },
     {
       "id": 1,
       "name": "Orc",
       "health": 150,
       "damage": 15,
-      "img": "https://i.ibb.co/z7vgZsC/orc.png"
+      "img": "https://i.ibb.co/z7vgZsC/orc.png",
+      "description" : "Рядовой орочий воин"
     },
     {
       "id": 2,
       "name": "Ettin",
       "health": 300,
       "damage": 30,
-      "img": "https://i.ibb.co/pnff04v/ettin.png"
+      "img": "https://i.ibb.co/pnff04v/ettin.png",
+      "description" : "Эттин великан, удивительно как он помещается в проходе не обвалив его"
     },
     {
       "id": 3,
       "name": "Skeleton",
       "health": 200,
       "damage": 20,
-      "img": "https://i.ibb.co/ypJs9Y8/skeleton.png"
+      "img": "https://i.ibb.co/ypJs9Y8/skeleton.png",
+      "description" : "Скелет-воин, раньше людей хоронили в земле, но после печального восстания, трупы сжигают"
     }
   ]
 }
