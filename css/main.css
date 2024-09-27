@@ -1,0 +1,1257 @@
+/*!*********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/styles/global.scss ***!
+  \*********************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/CharacterItem/CharacterItem.module.scss ***!
+  \*****************************************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-components-CharacterItem-CharacterItem-module__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  width: 26.5rem;
+  padding: 3.2rem 2.8rem;
+  border: 0.6rem solid transparent;
+  background-color: #272F44;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.1s;
+}
+.src-components-CharacterItem-CharacterItem-module__card:hover {
+  transform: scale(1.05);
+}
+.src-components-CharacterItem-CharacterItem-module__card h3 {
+  font-size: 2rem;
+  color: #D3D9B2;
+}
+.src-components-CharacterItem-CharacterItem-module__card .src-components-CharacterItem-CharacterItem-module__image {
+  width: 12rem;
+  height: 12rem;
+}
+.src-components-CharacterItem-CharacterItem-module__card .src-components-CharacterItem-CharacterItem-module__stats {
+  width: 100%;
+}
+.src-components-CharacterItem-CharacterItem-module__card .src-components-CharacterItem-CharacterItem-module__stat {
+  color: #D3D9B2;
+}
+.src-components-CharacterItem-CharacterItem-module__card .src-components-CharacterItem-CharacterItem-module__stat:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.src-components-CharacterItem-CharacterItem-module__card .src-components-CharacterItem-CharacterItem-module__stat p {
+  display: flex;
+  width: 100%;
+}
+.src-components-CharacterItem-CharacterItem-module__card .src-components-CharacterItem-CharacterItem-module__stat p span {
+  margin-left: auto;
+}
+.src-components-CharacterItem-CharacterItem-module__card.src-components-CharacterItem-CharacterItem-module__active {
+  border-color: #3B6983;
+}
+/*!******************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/pages/Characters/Characters.module.scss ***!
+  \******************************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-pages-Characters-Characters-module__characters {
+  padding: 5.3rem 0 10.3rem;
+  color: #D3D9B2;
+  text-align: center;
+}
+.src-pages-Characters-Characters-module__characters h2 {
+  font-size: 3.2rem;
+  margin-bottom: 5rem;
+}
+.src-pages-Characters-Characters-module__characters .src-pages-Characters-Characters-module__list {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-bottom: 6rem;
+}
+.src-pages-Characters-Characters-module__characters .src-pages-Characters-Characters-module__btn {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1.8rem 4rem 0.8rem;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  background-color: #D3D9B2;
+  color: #12274D;
+  border: 0.5rem solid #3B6983;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.2s;
+}
+.src-pages-Characters-Characters-module__characters .src-pages-Characters-Characters-module__btn:hover {
+  background-color: #3B6983;
+  color: #D3D9B2;
+}
+/*!****************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/UI/PlayerStats/PlayerStats.module.scss ***!
+  \****************************************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-components-UI-PlayerStats-PlayerStats-module__stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  width: fit-content;
+  padding: 2rem 4rem;
+  margin: 0 auto;
+  background-color: #272F44;
+  border: 0.4rem solid #D3D9B2;
+}
+.src-components-UI-PlayerStats-PlayerStats-module__stats .src-components-UI-PlayerStats-PlayerStats-module__stat {
+  width: 10rem;
+  text-align: center;
+  color: #D3D9B2;
+  font-size: 1.6rem;
+}
+.src-components-UI-PlayerStats-PlayerStats-module__stats .src-components-UI-PlayerStats-PlayerStats-module__stat span {
+  font-size: 2rem;
+}
+/*!************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/UI/Btn/Btn.module.scss ***!
+  \************************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-components-UI-Btn-Btn-module__btn {
+  width: 15.4rem;
+  padding: 1.8rem 2.9rem 2rem;
+  font-size: 1.6rem;
+  background-color: #272F44;
+  color: #D3D9B2;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.src-components-UI-Btn-Btn-module__btn:hover {
+  background-color: #3B6983;
+}
+/*!******************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/pages/Game/Game.module.scss ***!
+  \******************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-pages-Game-Game-module__game {
+  padding: 5.3rem 0 10.3rem;
+  color: #D3D9B2;
+}
+.src-pages-Game-Game-module__game h2 {
+  text-align: center;
+  font-size: 3.2rem;
+  margin-bottom: 5rem;
+}
+/*!*******************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/WinPanel/WinPanel.module.scss ***!
+  \*******************************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  font-size: 3.2rem;
+  margin-bottom: 5rem;
+}
+
+.src-components-WinPanel-WinPanel-module__btn {
+  margin: 0 auto;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1.8rem 4rem 0.8rem;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  background-color: #D3D9B2;
+  color: #12274D;
+  border: 0.5rem solid #3B6983;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.2s;
+}
+.src-components-WinPanel-WinPanel-module__btn:hover {
+  background-color: #3B6983;
+  color: #D3D9B2;
+}
+
+.src-components-WinPanel-WinPanel-module__btnFrame {
+  width: 30rem;
+  height: 23.6rem;
+  margin: 0 auto 13rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+/*!*********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/LosePanel/LosePanel.module.scss ***!
+  \*********************************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-components-LosePanel-LosePanel-module__lose h2 {
+  text-align: center;
+  font-size: 3.2rem;
+  margin-bottom: 5rem;
+}
+.src-components-LosePanel-LosePanel-module__lose p {
+  text-align: center;
+  font-size: 2rem;
+}
+.src-components-LosePanel-LosePanel-module__lose .src-components-LosePanel-LosePanel-module__btn {
+  margin: 0 auto;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1.8rem 4rem 0.8rem;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  background-color: #D3D9B2;
+  color: #12274D;
+  border: 0.5rem solid #3B6983;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.2s;
+}
+.src-components-LosePanel-LosePanel-module__lose .src-components-LosePanel-LosePanel-module__btn:hover {
+  background-color: #3B6983;
+  color: #D3D9B2;
+}
+.src-components-LosePanel-LosePanel-module__lose .src-components-LosePanel-LosePanel-module__btnFrame {
+  width: 30rem;
+  height: 23.6rem;
+  margin: 0 auto 13rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+/*!***********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/EnemyPanel/EnemyPanel.module.scss ***!
+  \***********************************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-components-EnemyPanel-EnemyPanel-module__card {
+  width: 30rem;
+  margin: 0 auto 10rem;
+}
+.src-components-EnemyPanel-EnemyPanel-module__card h3 {
+  font-size: 2rem;
+  color: #D3D9B2;
+  margin-bottom: 1rem;
+}
+.src-components-EnemyPanel-EnemyPanel-module__card progress {
+  width: 100%;
+  height: 2.5rem;
+  border: none;
+  margin-bottom: 5rem;
+}
+.src-components-EnemyPanel-EnemyPanel-module__card progress::-webkit-progress-bar {
+  background-color: rgba(86, 66, 82, 0.4980392157);
+}
+.src-components-EnemyPanel-EnemyPanel-module__card progress::-webkit-progress-value {
+  background-color: #70162B;
+}
+.src-components-EnemyPanel-EnemyPanel-module__card .src-components-EnemyPanel-EnemyPanel-module__image {
+  width: 12rem;
+  height: 12rem;
+  margin: 0 auto;
+}
+/*!******************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/pages/Main/Main.module.scss ***!
+  \******************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-pages-Main-Main-module__main {
+  padding: 8.3rem 0 10.3rem;
+  color: #D3D9B2;
+  text-align: center;
+}
+.src-pages-Main-Main-module__main .src-pages-Main-Main-module__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.src-pages-Main-Main-module__main h1 {
+  font-size: 4.8rem;
+  margin-bottom: 6rem;
+}
+.src-pages-Main-Main-module__main p {
+  width: 77rem;
+  margin: 0 auto;
+  font-size: 1.6rem;
+}
+.src-pages-Main-Main-module__main p:not(:last-child) {
+  margin-bottom: 2.5rem;
+}
+.src-pages-Main-Main-module__main .src-pages-Main-Main-module__image {
+  width: 18rem;
+  height: 18rem;
+  margin: 8.5rem auto 5rem;
+}
+.src-pages-Main-Main-module__main .src-pages-Main-Main-module__btn {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1.8rem 4rem 0.8rem;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  background-color: #D3D9B2;
+  color: #12274D;
+  border: 0.5rem solid #3B6983;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.2s;
+}
+.src-pages-Main-Main-module__main .src-pages-Main-Main-module__btn:hover {
+  background-color: #3B6983;
+  color: #D3D9B2;
+}
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/components/UI/DescriptionPanel/DescriptionPanel.module.scss ***!
+  \**************************************************************************************************************************************************************************************/
+@font-face {
+  font-family: "PressStart2P";
+  src: url(../4b5d9f109fe40f0d7c0e.eot);
+  src: local("PressStart2P-Regular"), local("PressStart2P-Regular"), url(../4b5d9f109fe40f0d7c0e.eot?#iefix) format("embedded-opentype"), url(../58a4af9790c33139dcd1.woff2) format("woff2"), url(../e8c1fac9e6eeee66da99.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "PressStart2P";
+  background-color: #222034;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font: inherit;
+}
+
+a {
+  color: unset;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: transparent;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+}
+input:focus {
+  outline: none;
+}
+input:active {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  width: 100%;
+  height: calc(100dvh - 17rem);
+  margin: 0 auto;
+}
+
+.bg {
+  position: absolute;
+  z-index: -1;
+  top: 4.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 144rem;
+  width: 100%;
+}
+
+.src-components-UI-DescriptionPanel-DescriptionPanel-module__panel {
+  width: 100%;
+  height: 17rem;
+  padding: 3rem 0;
+  color: #12274D;
+  background-color: #D3D9B2;
+}
+.src-components-UI-DescriptionPanel-DescriptionPanel-module__panel p {
+  font-size: 1.6rem;
+  line-height: 150%;
+  width: 95.2rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,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RUFDRTtBVVRKO0FWV0U7RUFDSTtBVVROOztBVmFBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7QVVWRjs7QVZhQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FVVkY7O0FBbkZBO0VBQ0U7RUFDQTtFQUNBO0VBQ0EsY1ZNSztFVUxMLHlCVk1NO0FVZ0ZSO0FBcEZFO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtBQXNGSixDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vd2VicGFjay8uL3NyYy9zdHlsZXMvZ2xvYmFsLnNjc3MiLCJ3ZWJwYWNrOi8vd2VicGFjay8uL3NyYy9jb21wb25lbnRzL0NoYXJhY3Rlckl0ZW0vQ2hhcmFjdGVySXRlbS5tb2R1bGUuc2NzcyIsIndlYnBhY2s6Ly93ZWJwYWNrLy4vc3JjL3BhZ2VzL0NoYXJhY3RlcnMvQ2hhcmFjdGVycy5tb2R1bGUuc2NzcyIsIndlYnBhY2s6Ly93ZWJwYWNrLy4vc3JjL2NvbXBvbmVudHMvVUkvUGxheWVyU3RhdHMvUGxheWVyU3RhdHMubW9kdWxlLnNjc3MiLCJ3ZWJwYWNrOi8vd2VicGFjay8uL3NyYy9jb21wb25lbnRzL1VJL0J0bi9CdG4ubW9kdWxlLnNjc3MiLCJ3ZWJwYWNrOi8vd2VicGFjay8uL3NyYy9wYWdlcy9HYW1lL0dhbWUubW9kdWxlLnNjc3MiLCJ3ZWJwYWNrOi8vd2VicGFjay8uL3NyYy9jb21wb25lbnRzL1dpblBhbmVsL1dpblBhbmVsLm1vZHVsZS5zY3NzIiwid2VicGFjazovL3dlYnBhY2svLi9zcmMvY29tcG9uZW50cy9Mb3NlUGFuZWwvTG9zZVBhbmVsLm1vZHVsZS5zY3NzIiwid2VicGFjazovL3dlYnBhY2svLi9zcmMvY29tcG9uZW50cy9FbmVteVBhbmVsL0VuZW15UGFuZWwubW9kdWxlLnNjc3MiLCJ3ZWJwYWNrOi8vd2VicGFjay8uL3NyYy9wYWdlcy9NYWluL01haW4ubW9kdWxlLnNjc3MiLCJ3ZWJwYWNrOi8vd2VicGFjay8uL3NyYy9jb21wb25lbnRzL1VJL0Rlc2NyaXB0aW9uUGFuZWwvRGVzY3JpcHRpb25QYW5lbC5tb2R1bGUuc2NzcyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==*/
