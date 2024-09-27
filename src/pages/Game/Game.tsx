@@ -22,8 +22,8 @@ export const Game = () => {
 
   // проверяем наличие игрока, сохраняем в переменную и реф
   useEffect(() => {
-    // setEnemies(data.enemies)
-    fetchEnemies()
+    setEnemies(data.enemies)
+    // fetchEnemies()
 
     setPlayer(getPlayer(player))
     playerRef.current = getPlayer(player)
