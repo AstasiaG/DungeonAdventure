@@ -1,8 +1,8 @@
 import { PlayerStats } from '@/components/PlayerStats/PlayerStats'
 import { PlayerContext } from '@/context'
-import { IMonster, IPlayer } from '@/types/types';
+import { IEnemy, IPlayer } from '@/types/types';
 import React, { useContext, useEffect, useMemo, useState } from 'react'
-import { MonsterPanel } from '@/components/MonsterPanel/MonsterPanel';
+
 import { ActionBtns } from '@/components/ActionBtns/ActionBtns';
 import * as classes from './Game.module.scss'
 import axios from 'axios';
@@ -10,18 +10,19 @@ import { WinPanel } from '@/components/WinPanel/WinPanel';
 import { LosePanel } from '@/components/LosePanel/LosePanel';
 
 import data from '@/assets/api.json'
+import { EnemyPanel } from '@/components/EnemyPanel/EnemyPanel';
 
 export const Game = () => {
   const { floor, player, setFloor, setPlayer, playerRef, setText } = useContext(PlayerContext);
-  const [monsters, setMonsters] = useState<IMonster[]>([]);
-  const [monster, setMonster] = useState<IMonster | null>(null);
+  const [enemies, setEnemies] = useState<IEnemy[]>([]);
+  const [enemy, setEnemy] = useState<IEnemy | null>(null);
   const [isWin, setIsWin] = useState<boolean>(false)
   const [isLose, setIsLose] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   // проверяем наличие игрока, сохраняем в переменную и реф
   useEffect(() => {
-    fetchMonsters()
+    fetchEnemies()
 
     if (localStorage.getItem('player')) {
       const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
@@ -29,27 +30,27 @@ export const Game = () => {
       playerRef.current = currentPlayer
     }
 
-    if (localStorage.getItem('monster') && !isLoading) {
-      const id: number = JSON.parse(localStorage.getItem('monster'))
-      console.log(typeof id, monsters)
-      const currentMonster: IMonster = JSON.parse(localStorage.getItem('monster'));
-      setMonster(monsters[id])
+    if (localStorage.getItem('enemy') && !isLoading) {
+      const id: number = JSON.parse(localStorage.getItem('enemy'))
+      console.log(typeof id, enemies)
+      const currentEnemy: IEnemy = JSON.parse(localStorage.getItem('enemy'));
+      setEnemy(enemies[id])
     }
 
-    console.log(monsters, monster)
+    console.log(enemies, enemy)
   }, [])
   
 // получаем монстров
   // useEffect(() => {
-  //   fetchMonsters()
-  //   console.log(monsters)
+  //   fetchEnemies()
+  //   console.log(enemies)
   // },[])
 
-  async function fetchMonsters() {
+  async function fetchEnemies() {
     try {
-      // const response = await axios.get<{ Monsters: IMonster[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
-      // setMonsters(response.data.Monsters)
-      setMonsters(data.Monsters)
+      // const response = await axios.get<{ Enemies: IEnemy[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
+      // setEnemies(response.data.Enemies)
+      setEnemies(data.enemies)
       
     } catch (e) {
       console.log(e)
@@ -60,7 +61,7 @@ export const Game = () => {
 
   // атака игрока
   const attack = () => {
-    setMonster({ ...monster, health: monster.health - player.damage })
+    setEnemy({ ...enemy, health: enemy.health - player.damage })
     setPlayer({ ...player, action: player.action - 1 })
   }
 
@@ -81,17 +82,17 @@ export const Game = () => {
 
   // следим за здоровьем монстра и ходами игрока
   const checkHealth = useMemo(() => {
-    if (player && monster) {
-      if ((monster.health) <= 0) {
+    if (player && enemy) {
+      if ((enemy.health) <= 0) {
         setIsWin(true)
         setPlayer({ ...player, action: playerRef.current.action })
-        setMonster(null)
-        localStorage.removeItem("monster")
+        setEnemy(null)
+        localStorage.removeItem("enemy")
         setIsLoading(true)
       }
 
-      if (player.action === 0 && !(monster.health <= 0)) {
-        setPlayer({ ...player, health: player.health - monster.damage, action: playerRef.current.action})
+      if (player.action === 0 && !(enemy.health <= 0)) {
+        setPlayer({ ...player, health: player.health - enemy.damage, action: playerRef.current.action})
       }
 
       if (player.health <= 0) {
@@ -99,27 +100,27 @@ export const Game = () => {
         localStorage.clear()
       }
     }
-  },[player?.action, monster?.health])
+  },[player?.action, enemy?.health])
 
-  const monsterAttack = () => {
-    setPlayer({ ...player, health: player.health - monster.damage, action: playerRef.current.action })
+  const enemyAttack = () => {
+    setPlayer({ ...player, health: player.health - enemy.damage, action: playerRef.current.action })
   }
 
-  const getRandomMonster = useMemo(() => {
+  const getRandomEnemy = useMemo(() => {
     if (!isLoading) {
-      if (localStorage.getItem('monster')) {
-        const id: number = JSON.parse(localStorage.getItem('monster'))
-        console.log(typeof id, monsters)
-        // const currentMonster: IMonster = JSON.parse(localStorage.getItem('monster'));
-        setMonster(monsters[id])
-      } else if (!monster) {
-        const result: number = Math.floor(Math.random() * monsters.length)
-        setMonster(monsters[result])
-        localStorage.setItem("monster", JSON.stringify(result))
+      if (localStorage.getItem('enemy')) {
+        const id: number = JSON.parse(localStorage.getItem('enemy'))
+        console.log(typeof id, enemies)
+        // const currentEnemy: IEnemy = JSON.parse(localStorage.getItem('enemy'));
+        setEnemy(enemies[id])
+      } else if (!enemy) {
+        const result: number = Math.floor(Math.random() * enemies.length)
+        setEnemy(enemies[result])
+        localStorage.setItem("enemy", JSON.stringify(result))
       }
     }
     
-  }, [floor, monsters])
+  }, [floor, enemies])
 
   return (
     <div className={classes.game}>
@@ -134,7 +135,7 @@ export const Game = () => {
         :
           <>
             <h2>{floor} Floor</h2>
-            <MonsterPanel monster={monster} />
+            <EnemyPanel enemy={enemy} />
           </>
       }
 

@@ -21,7 +21,7 @@ export const Characters = () => {
     try {
       // const response = await axios.get<{ Characters: IPlayer[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
       // setCharacters(response.data.Characters)
-      setCharacters(data.Characters)
+      setCharacters(data.characters)
     } catch (e) {
       console.log(e)
     } finally {

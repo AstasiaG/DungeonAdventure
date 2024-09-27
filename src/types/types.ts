@@ -8,7 +8,7 @@ export interface IPlayer {
   description: string
 }
 
-export interface IMonster {
+export interface IEnemy {
   id: number
   name: string
   health: number
