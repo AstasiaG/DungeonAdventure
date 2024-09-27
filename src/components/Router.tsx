@@ -13,7 +13,7 @@ export const Router = () => {
       <Routes>
         <Route path="/game" element={<Game />} />
         <Route path="/" element={<Main />} />
-        <Route path="/characters" element={<Characters />} />
+        <Route path="/characters" element={< Navigate to="/game" replace/>} />
       </Routes>
       :
       <Routes>

@@ -21,23 +21,36 @@ export const Game = () => {
 
   // проверяем наличие игрока, сохраняем в переменную и реф
   useEffect(() => {
+    fetchMonsters()
+
     if (localStorage.getItem('player')) {
       const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
       setPlayer(currentPlayer);
       playerRef.current = currentPlayer
     }
+
+    if (localStorage.getItem('monster') && !isLoading) {
+      const id: number = JSON.parse(localStorage.getItem('monster'))
+      console.log(typeof id, monsters)
+      const currentMonster: IMonster = JSON.parse(localStorage.getItem('monster'));
+      setMonster(monsters[id])
+    }
+
+    console.log(monsters, monster)
   }, [])
   
 // получаем монстров
-  useEffect(() => {
-    fetchMonsters()
-  },[])
+  // useEffect(() => {
+  //   fetchMonsters()
+  //   console.log(monsters)
+  // },[])
 
   async function fetchMonsters() {
     try {
       // const response = await axios.get<{ Monsters: IMonster[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
       // setMonsters(response.data.Monsters)
       setMonsters(data.Monsters)
+      
     } catch (e) {
       console.log(e)
     } finally {
@@ -73,6 +86,7 @@ export const Game = () => {
         setIsWin(true)
         setPlayer({ ...player, action: playerRef.current.action })
         setMonster(null)
+        localStorage.removeItem("monster")
         setIsLoading(true)
       }
 
@@ -92,9 +106,20 @@ export const Game = () => {
   }
 
   const getRandomMonster = useMemo(() => {
-    const result: number = Math.floor(Math.random() * monsters.length)
-    setMonster(monsters[result])
-  }, [floor,monsters])
+    if (!isLoading) {
+      if (localStorage.getItem('monster')) {
+        const id: number = JSON.parse(localStorage.getItem('monster'))
+        console.log(typeof id, monsters)
+        // const currentMonster: IMonster = JSON.parse(localStorage.getItem('monster'));
+        setMonster(monsters[id])
+      } else if (!monster) {
+        const result: number = Math.floor(Math.random() * monsters.length)
+        setMonster(monsters[result])
+        localStorage.setItem("monster", JSON.stringify(result))
+      }
+    }
+    
+  }, [floor, monsters])
 
   return (
     <div className={classes.game}>
