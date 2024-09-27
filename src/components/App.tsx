@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { IPlayer } from '@/types/types'
 import { PlayerContext } from '@/context'
 import { Router } from './Router'
-import { DescriptionPanel } from './DescriptionPanel/DescriptionPanel'
+import { DescriptionPanel } from './UI/DescriptionPanel/DescriptionPanel'
 
 export const App = () => {
   const [floor, setFloor] = useState<number>(1)

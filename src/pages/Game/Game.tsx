@@ -1,9 +1,9 @@
-import { PlayerStats } from '@/components/PlayerStats/PlayerStats'
+import { PlayerStats } from '@/components/UI/PlayerStats/PlayerStats'
 import { PlayerContext } from '@/context'
 import { IEnemy, IPlayer } from '@/types/types';
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 
-import { ActionBtns } from '@/components/ActionBtns/ActionBtns';
+import { ActionBtns } from '@/components/UI/ActionBtns/ActionBtns';
 import * as classes from './Game.module.scss'
 import axios from 'axios';
 import { WinPanel } from '@/components/WinPanel/WinPanel';
@@ -11,6 +11,7 @@ import { LosePanel } from '@/components/LosePanel/LosePanel';
 
 import data from '@/assets/api.json'
 import { EnemyPanel } from '@/components/EnemyPanel/EnemyPanel';
+import { useFetch } from '@/hooks/useFetch';
 
 export const Game = () => {
   const { floor, player, setFloor, setPlayer, playerRef, setText } = useContext(PlayerContext);
@@ -18,10 +19,10 @@ export const Game = () => {
   const [enemy, setEnemy] = useState<IEnemy | null>(null);
   const [isWin, setIsWin] = useState<boolean>(false)
   const [isLose, setIsLose] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   // проверяем наличие игрока, сохраняем в переменную и реф
   useEffect(() => {
+    // setEnemies(data.enemies)
     fetchEnemies()
 
     if (localStorage.getItem('player')) {
@@ -30,34 +31,13 @@ export const Game = () => {
       playerRef.current = currentPlayer
     }
 
-    if (localStorage.getItem('enemy') && !isLoading) {
-      const id: number = JSON.parse(localStorage.getItem('enemy'))
-      console.log(typeof id, enemies)
-      const currentEnemy: IEnemy = JSON.parse(localStorage.getItem('enemy'));
-      setEnemy(enemies[id])
-    }
-
-    console.log(enemies, enemy)
   }, [])
-  
-// получаем монстров
-  // useEffect(() => {
-  //   fetchEnemies()
-  //   console.log(enemies)
-  // },[])
 
-  async function fetchEnemies() {
-    try {
-      // const response = await axios.get<{ Enemies: IEnemy[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
-      // setEnemies(response.data.Enemies)
-      setEnemies(data.enemies)
-      
-    } catch (e) {
-      console.log(e)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const [fetchEnemies, isLoading, error] = useFetch(async() => {
+    const response = await axios.get<{ Monsters: IEnemy[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
+    setEnemies(response.data.Monsters)
+  })
+
 
   // атака игрока
   const attack = () => {
@@ -74,9 +54,9 @@ export const Game = () => {
       }
     } else if(player.health === playerRef.current.health) {
         setText('У вас уже полное здоровье!')
-       setTimeout(() => {
-        setText('')
-      }, 2000);
+        setTimeout(() => {
+          setText('')
+        }, 2000);
     }
   }
 
@@ -88,7 +68,6 @@ export const Game = () => {
         setPlayer({ ...player, action: playerRef.current.action })
         setEnemy(null)
         localStorage.removeItem("enemy")
-        setIsLoading(true)
       }
 
       if (player.action === 0 && !(enemy.health <= 0)) {
@@ -110,8 +89,6 @@ export const Game = () => {
     if (!isLoading) {
       if (localStorage.getItem('enemy')) {
         const id: number = JSON.parse(localStorage.getItem('enemy'))
-        console.log(typeof id, enemies)
-        // const currentEnemy: IEnemy = JSON.parse(localStorage.getItem('enemy'));
         setEnemy(enemies[id])
       } else if (!enemy) {
         const result: number = Math.floor(Math.random() * enemies.length)
@@ -125,12 +102,12 @@ export const Game = () => {
   return (
     <div className={classes.game}>
       {isWin ?
-        <WinPanel floor={floor} setFloor={setFloor} setIsLoading={setIsLoading} setIsWin={setIsWin} />
+        <WinPanel floor={floor} setFloor={setFloor} setIsWin={setIsWin} />
         :
         isLose ?
           <LosePanel floor={floor} setFloor={setFloor} setIsLose={setIsLose} />
-        :
-        isLoading ?
+          :
+        !enemy ?
           <h3>Loading...</h3>
         :
           <>
@@ -142,6 +119,7 @@ export const Game = () => {
       {player &&
         <PlayerStats />
       }
+
       {!isWin &&
         <ActionBtns attack={attack} heal={heal} />
       }

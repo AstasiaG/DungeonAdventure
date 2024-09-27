@@ -6,28 +6,22 @@ import { Link } from 'react-router-dom';
 import { PlayerContext } from '@/context';
 import axios from 'axios';
 import data from '@/assets/api.json'
+import { useFetch } from '@/hooks/useFetch';
 
 export const Characters = () => {
   const { player, setPlayer, playerRef, setText } = useContext(PlayerContext)
   const [characters, setCharacters] = useState<IPlayer[]>([])
   const [active, setActive] = useState<number>()
-  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    fetchCharacters()
+    setCharacters(data.characters)
+    // fetchCharacters()
   },[])
 
-  async function fetchCharacters() {
-    try {
-      // const response = await axios.get<{ Characters: IPlayer[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
-      // setCharacters(response.data.Characters)
-      setCharacters(data.characters)
-    } catch (e) {
-      console.log(e)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const [fetchCharacters, isLoading, error] = useFetch(async() => {
+    const response = await axios.get<{ Characters: IPlayer[] }>('https://dummyjson.com/c/c731-51ff-469f-8532');
+    setCharacters(response.data.Characters)
+  })
 
   const ChoosePlayer = (character: IPlayer) => {
     localStorage.setItem("player", JSON.stringify(character))

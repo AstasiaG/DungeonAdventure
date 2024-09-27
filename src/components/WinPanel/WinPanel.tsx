@@ -5,10 +5,9 @@ interface WinPanelProps {
   floor: number
   setFloor: (floor: number) => void
   setIsWin: (val: boolean) => void
-  setIsLoading: (val: boolean) => void
 }
 
-export const WinPanel:FC<WinPanelProps> = ({floor, setFloor, setIsWin, setIsLoading}) => {
+export const WinPanel:FC<WinPanelProps> = ({floor, setFloor, setIsWin}) => {
   return (
     <>
       <h2>You're Win!</h2>
@@ -16,7 +15,6 @@ export const WinPanel:FC<WinPanelProps> = ({floor, setFloor, setIsWin, setIsLoad
         <button className={classes.btn} onClick={() => {
           setFloor(floor + 1)
           setIsWin(false)
-          setIsLoading(false)
         }}>
           Next room
         </button>
