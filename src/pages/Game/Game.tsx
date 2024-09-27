@@ -2,7 +2,6 @@ import { PlayerStats } from '@/components/UI/PlayerStats/PlayerStats'
 import { PlayerContext } from '@/context'
 import { IEnemy, IPlayer } from '@/types/types';
 import React, { useContext, useEffect, useMemo, useState } from 'react'
-
 import { ActionBtns } from '@/components/UI/ActionBtns/ActionBtns';
 import * as classes from './Game.module.scss'
 import axios from 'axios';
@@ -12,12 +11,13 @@ import { LosePanel } from '@/components/LosePanel/LosePanel';
 import data from '@/assets/api.json'
 import { EnemyPanel } from '@/components/EnemyPanel/EnemyPanel';
 import { useFetch } from '@/hooks/useFetch';
+import { getPlayer } from '@/utils/GetPlayer';
 
 export const Game = () => {
   const { floor, player, setFloor, setPlayer, playerRef, setText } = useContext(PlayerContext);
   const [enemies, setEnemies] = useState<IEnemy[]>([]);
   const [enemy, setEnemy] = useState<IEnemy | null>(null);
-  const [isWin, setIsWin] = useState<boolean>(false)
+  const [isWin, setIsWin] = useState<boolean>(null)
   const [isLose, setIsLose] = useState<boolean>(false)
 
   // проверяем наличие игрока, сохраняем в переменную и реф
@@ -25,11 +25,8 @@ export const Game = () => {
     // setEnemies(data.enemies)
     fetchEnemies()
 
-    if (localStorage.getItem('player')) {
-      const currentPlayer: IPlayer = JSON.parse(localStorage.getItem('player'));
-      setPlayer(currentPlayer);
-      playerRef.current = currentPlayer
-    }
+    setPlayer(getPlayer(player))
+    playerRef.current = getPlayer(player)
 
   }, [])
 
@@ -38,54 +35,66 @@ export const Game = () => {
     setEnemies(response.data.Monsters)
   })
 
+  useEffect(() => {
+    checkWin()
+    enemyAttack()
+
+  }, [player, enemy])
 
   // атака игрока
-  const attack = () => {
+  const playerAttack = () => {
     setEnemy({ ...enemy, health: enemy.health - player.damage })
     setPlayer({ ...player, action: player.action - 1 })
   }
 
   const heal = () => {
-    if (player.health < playerRef.current.health && player.action >= 2) {
-      if (playerRef.current.health + 15 > playerRef.current.health) {
-        setPlayer({ ...player, health: playerRef.current.health, action: player.action - 2 })
-      } else {
-        setPlayer({ ...player, health: player.health + 15, action: player.action - 2 })
-      }
-    } else if(player.health === playerRef.current.health) {
+    const currentHealth = player.health;
+    const maxHealth = playerRef.current.health;
+
+    if (currentHealth < maxHealth && player.action >= 2) {
+      setPlayer({
+        ...player,
+        health:
+          currentHealth + 15 > maxHealth
+            ?
+            maxHealth
+            :
+            currentHealth + 15,
+        action: player.action - 2
+      })
+      setText("Лечение на 15 ед")
+
+    } else if(currentHealth === maxHealth) {
         setText('У вас уже полное здоровье!')
-        setTimeout(() => {
-          setText('')
-        }, 2000);
+    } else if (currentHealth < maxHealth && player.action < 2) {
+      setText('Не хватает очков действия!')
     }
   }
 
   // следим за здоровьем монстра и ходами игрока
-  const checkHealth = useMemo(() => {
+  const checkWin = () => {
     if (player && enemy) {
       if ((enemy.health) <= 0) {
         setIsWin(true)
         setPlayer({ ...player, action: playerRef.current.action })
         setEnemy(null)
         localStorage.removeItem("enemy")
-      }
-
-      if (player.action === 0 && !(enemy.health <= 0)) {
-        setPlayer({ ...player, health: player.health - enemy.damage, action: playerRef.current.action})
-      }
-
-      if (player.health <= 0) {
+      } else if (player.health <= 0) {
         setIsLose(true)
+        setText(`Ваш герой пал в коридорах подземелья от руки ${enemy}`)
         localStorage.clear()
       }
     }
-  },[player?.action, enemy?.health])
-
-  const enemyAttack = () => {
-    setPlayer({ ...player, health: player.health - enemy.damage, action: playerRef.current.action })
   }
 
-  const getRandomEnemy = useMemo(() => {
+  const enemyAttack = () => {
+    if (player.action === 0 && !(enemy.health <= 0)) {
+      setPlayer({ ...player, health: player.health - enemy.damage, action: playerRef.current.action })
+    }
+  }
+
+
+  const getEnemy = useMemo(() => {
     if (!isLoading) {
       if (localStorage.getItem('enemy')) {
         const id: number = JSON.parse(localStorage.getItem('enemy'))
@@ -96,7 +105,6 @@ export const Game = () => {
         localStorage.setItem("enemy", JSON.stringify(result))
       }
     }
-    
   }, [floor, enemies])
 
   return (
@@ -121,7 +129,7 @@ export const Game = () => {
       }
 
       {!isWin &&
-        <ActionBtns attack={attack} heal={heal} />
+        <ActionBtns attack={playerAttack} heal={heal} />
       }
     </div>
   )

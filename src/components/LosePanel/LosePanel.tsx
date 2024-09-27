@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as classes from './LosePanel.module.scss'
+import { PlayerContext } from '@/context'
 
 interface LosePanelProps {
   floor: number
@@ -8,7 +9,8 @@ interface LosePanelProps {
   setIsLose: (val: boolean) => void
 }
 
-export const LosePanel:FC<LosePanelProps> = ({ floor, setFloor, setIsLose}) => {
+export const LosePanel: FC<LosePanelProps> = ({ floor, setFloor, setIsLose }) => {
+  const { setPlayer, player} = useContext(PlayerContext)
   const router = useNavigate()
   return (
     <div className={classes.lose}>
@@ -18,7 +20,7 @@ export const LosePanel:FC<LosePanelProps> = ({ floor, setFloor, setIsLose}) => {
         <button className={classes.btn} onClick={() => {
           setFloor(1)
           setIsLose(false)
-          router('/characters')
+          router('/game')
         }}>
           Repeat?
       </button>

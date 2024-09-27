@@ -13,7 +13,7 @@ export const Router = () => {
       {/* <Route path="/game" element={player ? <Game /> : < Navigate to="/characters" replace />} />
       <Route path="/characters" element={player ? <>< Navigate to="/game" replace />} /> */}
       
-      {player
+      {player 
         ?
         <>
           <Route path="/game" element={<Game />} />

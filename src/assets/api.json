@@ -3,7 +3,7 @@
     {
       "id": 0,
       "name": "Knight",
-      "health": 300,
+      "health": 30,
       "action": 3,
       "damage": 35,
       "img": "https://i.ibb.co/XpJs6hz/knight.png",
