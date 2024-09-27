@@ -1,6 +1,6 @@
 import '@/styles/global.scss'
 import Bg from '@/assets/bg.png'
-import { BrowserRouter, Routes, useParams } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Routes, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { IPlayer } from '@/types/types'
 import { PlayerContext } from '@/context'
@@ -31,7 +31,7 @@ export const App = () => {
       text,
       setText
     }}>
-      <BrowserRouter>
+      <HashRouter>
       <div className='container'>
         <div className='bg'>
           <img src={Bg} alt=''/>
@@ -39,7 +39,7 @@ export const App = () => {
           <Router />
         </div>
         <DescriptionPanel />
-      </BrowserRouter>
+      </HashRouter>
     </PlayerContext.Provider>
   )
 }
