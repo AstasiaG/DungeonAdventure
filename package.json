@@ -5,8 +5,8 @@
   "homepage": "https://astasiag.github.io/DungeonAdventure",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --env mode=development",
-    "build-prod": "webpack --env mode=production",
+    "build-dev": "webpack --env mode=development",
+    "build": "webpack --env mode=production",
     "start": "webpack serve",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build" 

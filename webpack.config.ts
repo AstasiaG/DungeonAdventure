@@ -24,7 +24,8 @@ export default (env: EnvVariables) => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: isDev ? '[name].js' : '[name].[contenthash].js',
-      clean: true
+      clean: true,
+      publicPath: '/',
     },
 
     plugins: [
