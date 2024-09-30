@@ -20,6 +20,7 @@ export const LosePanel: FC<LosePanelProps> = ({ floor, setFloor, setIsLose }) =>
         <button className={classes.btn} onClick={() => {
           setFloor(1)
           setIsLose(false)
+          setPlayer(JSON.parse(localStorage.getItem('player')))
           router('/game')
         }}>
           Repeat?
@@ -27,6 +28,8 @@ export const LosePanel: FC<LosePanelProps> = ({ floor, setFloor, setIsLose }) =>
       <button className={classes.btn} onClick={() => {
           setFloor(1)
           setIsLose(false)
+          localStorage.clear()
+          setPlayer(null)
           router('/')
         }}>
           Exit

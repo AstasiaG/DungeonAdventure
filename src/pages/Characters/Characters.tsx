@@ -15,6 +15,7 @@ export const Characters = () => {
 
   useEffect(() => {
     setCharacters(data.characters)
+    setText('')
     // fetchCharacters()
   },[])
 

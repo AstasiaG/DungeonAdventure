@@ -81,8 +81,9 @@ export const Game = () => {
         localStorage.removeItem("enemy")
       } else if (player.health <= 0) {
         setIsLose(true)
-        setText(`Ваш герой пал в коридорах подземелья от руки ${enemy}`)
-        localStorage.clear()
+        setText(`Ваш герой пал в коридорах подземелья от руки ${enemy.name}`)
+        // localStorage.clear()
+        // player.health = playerRef.health;
       }
     }
   }
@@ -107,6 +108,12 @@ export const Game = () => {
     }
   }, [floor, enemies])
 
+  function endBattle(isLose: boolean, isWin: boolean) {
+    if (!isWin && !isLose) {
+      return <ActionBtns attack={playerAttack} heal={heal} />
+    }
+  }
+
   return (
     <div className={classes.game}>
       {isWin ?
@@ -128,8 +135,8 @@ export const Game = () => {
         <PlayerStats />
       }
 
-      {!isWin &&
-        <ActionBtns attack={playerAttack} heal={heal} />
+      {
+        endBattle(isLose, isWin)
       }
     </div>
   )

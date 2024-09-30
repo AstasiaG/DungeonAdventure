@@ -2,11 +2,11 @@
   "name": "webpack",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://astasiag.github.io/DungeonAdventure",
+  "homepage": "https://astasiag.github.io/DungeonAdventure/",
   "main": "index.js",
   "scripts": {
-    "build-dev": "webpack --env mode=development",
-    "build": "webpack --env mode=production",
+    "build": "webpack --env mode=development",
+    "build-prod": "webpack --env mode=production",
     "start": "webpack serve",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build" 
