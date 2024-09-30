@@ -12,13 +12,21 @@ import data from '@/assets/api.json'
 import { EnemyPanel } from '@/components/EnemyPanel/EnemyPanel';
 import { useFetch } from '@/hooks/useFetch';
 import { getPlayer } from '@/utils/GetPlayer';
+import { useEnemy } from '@/hooks/useEnemy';
 
 export const Game = () => {
   const { floor, player, setFloor, setPlayer, playerRef, setText } = useContext(PlayerContext);
   const [enemies, setEnemies] = useState<IEnemy[]>([]);
-  const [enemy, setEnemy] = useState<IEnemy | null>(null);
   const [isWin, setIsWin] = useState<boolean>(null)
   const [isLose, setIsLose] = useState<boolean>(false)
+
+  const [fetchEnemies, isLoading, error] = useFetch(async() => {
+    const response = await axios.get<{ Monsters: IEnemy[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
+    setEnemies(response.data.Monsters)
+  })
+
+  const [enemy, setEnemy] = useEnemy(isLoading, enemies, floor)
+
 
   // проверяем наличие игрока, сохраняем в переменную и реф
   useEffect(() => {
@@ -27,13 +35,7 @@ export const Game = () => {
 
     setPlayer(getPlayer(player))
     playerRef.current = getPlayer(player)
-
   }, [])
-
-  const [fetchEnemies, isLoading, error] = useFetch(async() => {
-    const response = await axios.get<{ Monsters: IEnemy[] }>('https://dummyjson.com/c/c731-51ff-469f-8532')
-    setEnemies(response.data.Monsters)
-  })
 
   useEffect(() => {
     checkWin()
@@ -82,8 +84,6 @@ export const Game = () => {
       } else if (player.health <= 0) {
         setIsLose(true)
         setText(`Ваш герой пал в коридорах подземелья от руки ${enemy.name}`)
-        // localStorage.clear()
-        // player.health = playerRef.health;
       }
     }
   }
@@ -93,20 +93,6 @@ export const Game = () => {
       setPlayer({ ...player, health: player.health - enemy.damage, action: playerRef.current.action })
     }
   }
-
-
-  const getEnemy = useMemo(() => {
-    if (!isLoading) {
-      if (localStorage.getItem('enemy')) {
-        const id: number = JSON.parse(localStorage.getItem('enemy'))
-        setEnemy(enemies[id])
-      } else if (!enemy) {
-        const result: number = Math.floor(Math.random() * enemies.length)
-        setEnemy(enemies[result])
-        localStorage.setItem("enemy", JSON.stringify(result))
-      }
-    }
-  }, [floor, enemies])
 
   function endBattle(isLose: boolean, isWin: boolean) {
     if (!isWin && !isLose) {
