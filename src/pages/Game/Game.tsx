@@ -1,13 +1,12 @@
 import { PlayerStats } from '@/components/UI/PlayerStats/PlayerStats'
 import { PlayerContext } from '@/context'
-import { IEnemy, IPlayer } from '@/types/types';
+import { IEnemy } from '@/types/types';
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { ActionBtns } from '@/components/UI/ActionBtns/ActionBtns';
 import * as classes from './Game.module.scss'
 import axios from 'axios';
 import { WinPanel } from '@/components/WinPanel/WinPanel';
 import { LosePanel } from '@/components/LosePanel/LosePanel';
-
 import data from '@/assets/api.json'
 import { EnemyPanel } from '@/components/EnemyPanel/EnemyPanel';
 import { useFetch } from '@/hooks/useFetch';
@@ -27,7 +26,6 @@ export const Game = () => {
 
   const [enemy, setEnemy] = useEnemy(isLoading, enemies, floor)
 
-
   // проверяем наличие игрока, сохраняем в переменную и реф
   useEffect(() => {
     setEnemies(data.enemies)
@@ -35,6 +33,10 @@ export const Game = () => {
 
     setPlayer(getPlayer(player))
     playerRef.current = getPlayer(player)
+
+    if (localStorage.getItem('floor')) {
+      setFloor(JSON.parse(localStorage.getItem('floor')))
+    }
   }, [])
 
   useEffect(() => {
@@ -43,7 +45,6 @@ export const Game = () => {
 
   }, [player, enemy])
 
-  // атака игрока
   const playerAttack = () => {
     setEnemy({ ...enemy, health: enemy.health - player.damage })
     setPlayer({ ...player, action: player.action - 1 })
@@ -56,12 +57,11 @@ export const Game = () => {
     if (currentHealth < maxHealth && player.action >= 2) {
       setPlayer({
         ...player,
-        health:
-          currentHealth + 15 > maxHealth
-            ?
-            maxHealth
-            :
-            currentHealth + 15,
+        health: currentHealth + 15 > maxHealth
+        ?
+        maxHealth
+        :
+        currentHealth + 15,
         action: player.action - 2
       })
       setText("Лечение на 15 ед")
@@ -73,7 +73,6 @@ export const Game = () => {
     }
   }
 
-  // следим за здоровьем монстра и ходами игрока
   const checkWin = () => {
     if (player && enemy) {
       if ((enemy.health) <= 0) {
@@ -94,7 +93,7 @@ export const Game = () => {
     }
   }
 
-  function endBattle(isLose: boolean, isWin: boolean) {
+  function ShowActionBtns(isLose: boolean, isWin: boolean) {
     if (!isWin && !isLose) {
       return <ActionBtns attack={playerAttack} heal={heal} />
     }
@@ -121,9 +120,7 @@ export const Game = () => {
         <PlayerStats />
       }
 
-      {
-        endBattle(isLose, isWin)
-      }
+      { ShowActionBtns(isLose, isWin) }
     </div>
   )
 }

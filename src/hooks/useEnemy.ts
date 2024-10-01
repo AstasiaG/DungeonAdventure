@@ -3,6 +3,7 @@ import React, { useMemo, useState } from 'react'
 
 export const useEnemy = (isLoading: boolean, enemies: IEnemy[], floor: number) => {
   const [enemy, setEnemy] = useState<IEnemy>(null)
+  
   const getEnemy = useMemo(() => {
       if (!isLoading) {
         if (localStorage.getItem('enemy')) {

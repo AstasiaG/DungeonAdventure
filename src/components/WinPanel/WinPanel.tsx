@@ -15,6 +15,7 @@ export const WinPanel:FC<WinPanelProps> = ({floor, setFloor, setIsWin}) => {
         <button className={classes.btn} onClick={() => {
           setFloor(floor + 1)
           setIsWin(false)
+          localStorage.setItem("floor", JSON.stringify(floor))
         }}>
           Next room
         </button>
